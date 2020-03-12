@@ -13,6 +13,19 @@ conn = pyodbc.connect('DSN=MYMSSQL;UID=SA;PWD=Passw0rd2018;DATABASE=northwind')
 # Creating a cursor object from connection. Like a real cursor.
 crsr = conn.cursor()
 
+# Better to use while loop instead of .fetchall()
+rows = crsr.execute("SELECT * FROM Products")
+new_values = []
+
+while True:
+    record = rows.fetchone()
+    if record is None:
+        break
+    print(record.UnitPrice * 200)
+    new_values.append(record.UnitPrice * 200)
+
+print(new_values)
+
 # Running SQL commands using execute.
 # rows = crsr.execute("select * FROM customers").fetchall()
 # for i in rows:
@@ -31,15 +44,13 @@ crsr = conn.cursor()
 # print (row)
 # print (row.ContactName, row.Fax)
 
-# #Gives all employees in London
+# # Gives all employees in London / using .fetchall() is dangerous
 # rows = crsr.execute("SELECT * FROM Employees WHERE City = 'London'").fetchall()
+# print(len(rows))
+# counter = 1
 # for i in rows:
-#     print(str(i) + '\n')
+#     print(counter,str(i) + '\n')
+#     counter += 1
 
 
 
-
-#gives us individual columns
-print(crsr.description)
-crsr.close()
-conn.close()
