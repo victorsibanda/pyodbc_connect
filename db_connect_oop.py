@@ -18,7 +18,8 @@ class MSDBConnection():
         return self.cursor.execute(query)
 
 
-nw_db_object = MSDBConnection()
-
-nw_db_object.sql_query('SELECT * FROM Products')
-print(nw_db_object)
+# nw_db_object = MSDBConnection()
+#
+# rows = nw_db_object.sql_query('SELECT * FROM Products')
+#
+# print(rows.fetchone())
