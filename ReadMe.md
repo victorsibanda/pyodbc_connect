@@ -11,3 +11,10 @@ The class will be about joining our python with sql
 -  Make our data persistent 
 - Mirror our class in the db
 - CRUD - Create Read Update Destroy
+
+
+#### DOCUMENTATION
+https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-2017
+
+https://github.com/mkleehammer/pyodbc/wiki/Connecting-to-SQL-Server-from-Mac-OSX
+
