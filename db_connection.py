@@ -15,14 +15,6 @@ crsr = conn.cursor()
 
 # rows = crsr.execute("SELECT * FROM Products")
 
-
-#
-# mySql_insert_query = """INSERT INTO Products (ProductID, ProductName)
-#                                 VALUES (9000, Scouter) """
-# recordTuple = (ProductID,ProductName)
-#
-# crsr.execute(mySql_insert_query,recordTuple)
-
 # Better to use while loop instead of .fetchall()
 
 # new_values = []

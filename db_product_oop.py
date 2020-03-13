@@ -30,24 +30,28 @@ class NWProducts(MSDBConnection):
 # select
     def read_all(self):
         rows =self.__sql_query(f'SELECT * FROM {self.table}')
+        # self.conn.commit()
         return rows
 
 
-# UPDATE
+# UPDATE (NOT YET WORKING
     def update_item(self):
         user_update = input('What do you want to update to?')
         rows =self.__sql_query(f"UPDATE {self.table} SET (ProductName) = ('{user_update}') WHERE ProductName = 'chai' ;")
+        self.conn.commit()
         return rows
 
 # DELETE one product
     def delete_item(self):
         delete = input('What do you want to delete?')
         rows =self.__sql_query(f"DELETE FROM {self.table} WHERE ProductName = ('{delete}')")
+        self.conn.commit()
         return rows
 
 # delete
     def read_one(self):
         id_input= input("Enter the ID?")
         rows =self.__sql_query(f'SELECT * FROM {self.table} WHERE ProductID = {id_input}')
+
         return rows
 
