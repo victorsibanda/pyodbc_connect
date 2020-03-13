@@ -9,7 +9,7 @@ while True:
     print('------Loading ------')
     time.sleep(3)
     print('SELECT \n 1: Print all products \n 2: Print one product \n 3: Create a Product \n 4: Delete a Product \n '
-          '5: Update a ProductName \n')
+          '5: Update a ProductName \n 6:Add a new item with all columns \n')
     user_input = input('>>>>')
     count = 0
 
@@ -20,8 +20,6 @@ while True:
             record = data.fetchone()
             if record is None:
                 break
-            print('------Loading ------')
-            time.sleep(1)
             print(record)
     elif user_input == '2':
         data_products = products_tb.read_one()
@@ -42,14 +40,18 @@ while True:
         time.sleep(1)
         delete_products = products_tb.delete_item()
     elif user_input == '5':
-        try:
-            update_products = products_tb.update_item()
-        except ValueError:
-            print('You did not enter a valid integer so please try again')
-        finally:
-            print('-----Item Update Finished Running-----')
+        update_products = products_tb.update_item()
+    elif user_input == '6':
+        user_add = input('what do you want to add?')
+        supplier = int(input('What is the supplier ID'))
+        category = int(input('What is the Unit ID'))
+        unit_price = float(input('What is the unit price'))
+        create_products2 = products_tb.create_item2(user_add,supplier,category,unit_price)
+        print(create_products2)
     else:
         print('------Loading ------')
         time.sleep(2)
         print('Not a valid input')
 
+
+#pyodbc.DataError

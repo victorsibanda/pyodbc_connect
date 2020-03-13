@@ -17,13 +17,24 @@ class NWProducts(MSDBConnection):
 
 # write all the CRUD METHODS
 
-    # CREATE ONE PRODUCT
+    # CREATE ONE PRODUCT for one item
     def create_item(self):
         user_add = input('what do you want to add?')
         row = self.__sql_query(f"INSERT INTO {self.table} (ProductName)  VALUES ('{user_add}')")
         return row
 
+    # CREATE ONE PRODUCT for more than one column
+    def create_item2(self,user_add,supplier_id,category_id,unit_price):
+        try:
+            row = self.__sql_query(f"INSERT INTO {self.table} (ProductName, SupplierID,CategoryID,UnitPrice)  VALUES ('{user_add}',{supplier_id},{category_id},{unit_price})")
 
+            self.conn.commit()
+            return row
+        except pyodbc.DataError as err:
+            print('Mate, check your data yes?')
+            print(err)
+            print('Above is your error!')
+            return 'done!'
 
 
 # READONE and READALL
@@ -42,11 +53,18 @@ class NWProducts(MSDBConnection):
 #         return rows
 
     def update_item(self):
-        user_id = int(input('What product ID do you want to change'))
-        user_update = input('What do you want to update to?')
-        rows =self.__sql_query(f"UPDATE {self.table} SET ProductName = '{user_update}' WHERE ProductID = {user_id}")
-        self.conn.commit()
-        return rows
+        try:
+            user_id = int(input('What product ID do you want to change'))
+            user_update = input('What do you want to update to?')
+            rows =self.__sql_query(f"UPDATE {self.table} SET ProductName = '{user_update}' WHERE ProductID = {user_id}")
+            self.conn.commit()
+            return rows
+
+        except ValueError:
+            print('You did not enter a valid integer so please try again')
+        finally:
+            print('-----Item Update Finished Running-----')
+
 
     # DELETE one product
     def delete_item(self):
