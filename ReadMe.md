@@ -18,3 +18,13 @@ https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-od
 
 https://github.com/mkleehammer/pyodbc/wiki/Connecting-to-SQL-Server-from-Mac-OSX
 
+Clone Repository Using 
+```Python
+git clone git@github.com:victorsibanda/pyodbc_connect.git
+```
+
+Run the File Using 
+```Python
+run_file.py
+```
+
