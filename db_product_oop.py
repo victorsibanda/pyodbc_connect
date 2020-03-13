@@ -20,7 +20,8 @@ class NWProducts(MSDBConnection):
     # CREATE ONE PRODUCT
     def create_item(self):
         user_add = input('what do you want to add?')
-        row = self.__sql_query(f"INSERT INTO {self.table} (ProductName) VALUES ('{user_add}')")
+        user_price= float(input('what is the price'))
+        row = self.__sql_query(f"INSERT INTO {self.table} (ProductName)  VALUES ('{user_add}')")
         return row
 
 
@@ -34,7 +35,7 @@ class NWProducts(MSDBConnection):
         return rows
 
 
-# UPDATE (NOT YET WORKING
+# UPDATE (NOT YET WORKING)
     def update_item(self):
         user_update = input('What do you want to update to?')
         rows =self.__sql_query(f"UPDATE {self.table} SET (ProductName) = ('{user_update}') WHERE ProductName = 'chai' ;")
@@ -52,6 +53,5 @@ class NWProducts(MSDBConnection):
     def read_one(self):
         id_input= input("Enter the ID?")
         rows =self.__sql_query(f'SELECT * FROM {self.table} WHERE ProductID = {id_input}')
-
         return rows
 
