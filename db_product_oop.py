@@ -17,8 +17,14 @@ class NWProducts(MSDBConnection):
 
 # write all the CRUD METHODS
 
-# CREATE ONE PRODUCT
-# insert
+    # CREATE ONE PRODUCT
+    def create_item(self):
+        user_add = input('what do you want to add?')
+        row = self.__sql_query(f"INSERT INTO {self.table} (ProductName) VALUES ('{user_add}')")
+        return row
+
+
+
 
 # READONE and READALL
 # select
@@ -28,7 +34,20 @@ class NWProducts(MSDBConnection):
 
 
 # UPDATE
+    def update_item(self):
+        user_update = input('What do you want to update to?')
+        rows =self.__sql_query(f"UPDATE {self.table} SET (ProductName) = ('{user_update}') WHERE ProductName = 'chai' ;")
+        return rows
 
 # DELETE one product
+    def delete_item(self):
+        delete = input('What do you want to delete?')
+        rows =self.__sql_query(f"DELETE FROM {self.table} WHERE ProductName = ('{delete}')")
+        return rows
 
 # delete
+    def read_one(self):
+        id_input= input("Enter the ID?")
+        rows =self.__sql_query(f'SELECT * FROM {self.table} WHERE ProductID = {id_input}')
+        return rows
+

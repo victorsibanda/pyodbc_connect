@@ -13,18 +13,28 @@ conn = pyodbc.connect('DSN=MYMSSQL;UID=SA;PWD=Passw0rd2018;DATABASE=northwind')
 # Creating a cursor object from connection. Like a real cursor.
 crsr = conn.cursor()
 
+# rows = crsr.execute("SELECT * FROM Products")
+
+
+#
+# mySql_insert_query = """INSERT INTO Products (ProductID, ProductName)
+#                                 VALUES (9000, Scouter) """
+# recordTuple = (ProductID,ProductName)
+#
+# crsr.execute(mySql_insert_query,recordTuple)
+
 # Better to use while loop instead of .fetchall()
-rows = crsr.execute("SELECT * FROM Products")
-new_values = []
 
-while True:
-    record = rows.fetchone()
-    if record is None:
-        break
-    print(record.UnitPrice * 200)
-    new_values.append(record.UnitPrice * 200)
-
-print(new_values)
+# new_values = []
+#
+# while True:
+#     record = rows.fetchone()
+#     if record is None:
+#         break
+#     print(record.UnitPrice * 200)
+#     new_values.append(record.UnitPrice * 200)
+#
+# print(new_values)
 
 # Running SQL commands using execute.
 # rows = crsr.execute("select * FROM customers").fetchall()
