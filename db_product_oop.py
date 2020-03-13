@@ -36,20 +36,27 @@ class NWProducts(MSDBConnection):
 
 
 # UPDATE (NOT YET WORKING)
+#     def update_item(self):
+#         user_update = input('What do you want to update to?')
+#         rows =self.__sql_query(f"UPDATE {self.table} SET (ProductName) = ('{user_update}') WHERE ProductID = 88 ;")
+#         self.conn.commit()
+#         return rows
+
     def update_item(self):
+        user_id = int(input('What product ID do you want to change'))
         user_update = input('What do you want to update to?')
-        rows =self.__sql_query(f"UPDATE {self.table} SET (ProductName) = ('{user_update}') WHERE ProductName = 'chai' ;")
+        rows =self.__sql_query(f"UPDATE {self.table} SET ProductName = '{user_update}' WHERE ProductID = {user_id}")
         self.conn.commit()
         return rows
 
-# DELETE one product
+    # DELETE one product
     def delete_item(self):
         delete = input('What do you want to delete?')
         rows =self.__sql_query(f"DELETE FROM {self.table} WHERE ProductName = ('{delete}')")
         self.conn.commit()
         return rows
 
-# delete
+    # read one
     def read_one(self):
         id_input= input("Enter the ID?")
         rows =self.__sql_query(f'SELECT * FROM {self.table} WHERE ProductID = {id_input}')
