@@ -1,11 +1,15 @@
 from db_product_oop import *
 from db_connect_oop import *
-
+import time
 products_tb = NWProducts()
 
 while True:
-
-    print('SELECT \n 1: Print all products \n 2: Print one product \n 3: Create a Product \n 4: Delete a Product \n 5: Update a ProductName \n')
+    print('Welcome')
+    time.sleep(1)
+    print('------Loading ------')
+    time.sleep(3)
+    print('SELECT \n 1: Print all products \n 2: Print one product \n 3: Create a Product \n 4: Delete a Product \n '
+          '5: Update a ProductName \n')
     user_input = input('>>>>')
     count = 0
 
@@ -16,20 +20,36 @@ while True:
             record = data.fetchone()
             if record is None:
                 break
+            print('------Loading ------')
+            time.sleep(1)
             print(record)
-    if user_input == '2':
+    elif user_input == '2':
         data_products = products_tb.read_one()
         while True:
             record = data_products.fetchone()
             if record is None:
                 break
+            print('------Loading ------')
+            time.sleep(1)
             print(record)
-
             print(record.ProductName)
-    if user_input == '3':
+    elif user_input == '3':
+        print('------Loading ------')
+        time.sleep(1)
         create_products = products_tb.create_item()
-    if user_input == '4':
+    elif user_input == '4':
+        print('------Loading ------')
+        time.sleep(1)
         delete_products = products_tb.delete_item()
-    if user_input == '5':
-        update_products = products_tb.update_item()
+    elif user_input == '5':
+        try:
+            update_products = products_tb.update_item()
+        except ValueError:
+            print('You did not enter a valid integer so please try again')
+        finally:
+            print('-----Item Update Finished Running-----')
+    else:
+        print('------Loading ------')
+        time.sleep(2)
+        print('Not a valid input')
 

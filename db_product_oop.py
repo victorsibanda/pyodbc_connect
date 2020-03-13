@@ -20,7 +20,6 @@ class NWProducts(MSDBConnection):
     # CREATE ONE PRODUCT
     def create_item(self):
         user_add = input('what do you want to add?')
-        user_price= float(input('what is the price'))
         row = self.__sql_query(f"INSERT INTO {self.table} (ProductName)  VALUES ('{user_add}')")
         return row
 
